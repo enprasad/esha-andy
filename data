@@ -1,5 +1,0 @@
-# data for lobster trap buoy counts
-lobster_trap <- read.csv(here::here("Lobster_Trap_Counts_All_Years_20210519")
-
-# data for lobster abundance
-lobster_abundance <- read_csv(here::here("data/Lobster_Abundance_All_Years_20220829.csv"))
