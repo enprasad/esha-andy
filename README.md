@@ -1,2 +1,2 @@
 # prasad_testing
-A test repository for BIO806
+A repository for assignment a07 for BIO 806
