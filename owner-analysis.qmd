@@ -21,3 +21,40 @@ library(here)
 ```{r}
 lobster_abundance <- read_csv(here::here("data/Lobster_Abundance_All_Years_20220829.csv"))
 ```
+
+### Exercise 1
+
+```{r}
+lobster_abundance <- lobster_abundance %>% 
+    mutate(SIZE_MM = na_if(SIZE_MM, -99999))
+```
+
+This function makes it so that values of "-99999" in the column "SIZE_MM" are turned into "NA", which is easier for R to read when reading through the data table.
+
+### Exercise 2
+
+```{r}
+not_napl <- lobster_abundance %>% 
+     filter(SITE != "NAPL")
+```
+
+This function makes it so that all values from the site "NAPL" are removed in the new table.
+
+### Exercise 3
+
+```{r}
+aque_70mm <- lobster_abundance %>% 
+     filter(SITE == "AQUE" & SIZE_MM >= 70)
+```
+
+This function makes it so that only lobsters from the site "AQUE" over a size of 70mm are put into the new table.
+
+### Exercise 4
+
+```{r}
+max_lobster <- lobster_abundance %>% 
+     group_by(SITE, MONTH) %>% 
+     summarize(MAX_LENGTH = max(SIZE_MM, na.rm = TRUE))
+```
+
+This function makes it so that the lobster data is compressed by site and month, and shows the max lobster length at each site for that month.
