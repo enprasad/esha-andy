@@ -1,26 +1,20 @@
 ---
 title: "Lobster Report"
+author: "Andreas Krumbein & Esha Prasad"
 format: html
 editor: visual
 ---
 
-## Quarto
+## Analysis of Lobster Population and Fishing Pressure
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+### Citation
 
-## Running Code
+Santa Barbara Coastal LTER, D. Reed, and R. Miller. 2022. SBC LTER: Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012 ver 8. Environmental Data Initiative. https://doi.org/10.6073/pasta/25aa371650a671bafad64dd25a39ee18 (Accessed 2026-04-16).
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+### Data
 
-```{r}
-1 + 1
-```
+### Lobster Abundance Analysis
 
-You can add options to executable code like this
+### Lobster Fishing Pressure
 
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+###Discussion
