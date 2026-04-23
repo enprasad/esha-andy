@@ -16,8 +16,102 @@ library(tidyr)
 library(here)
 ```
 
-## Loading the Data
+### Loading the Data
 
 ```{r}
 lobster_abundance <- read_csv(here::here("data/Lobster_Abundance_All_Years_20220829.csv"))
+```
+
+### Exercise 1
+
+```{r}
+lobster_abundance <- lobster_abundance %>% 
+    mutate(SIZE_MM = na_if(SIZE_MM, -99999))
+```
+
+This function makes it so that values of "-99999" in the column "SIZE_MM" are turned into "NA", which is easier for R to read when reading through the data table.
+
+### Exercise 2
+
+```{r}
+not_napl <- lobster_abundance %>% 
+     filter(SITE != "NAPL")
+```
+
+This function makes it so that all values from the site "NAPL" are removed in the new table.
+
+### Exercise 3
+
+```{r}
+aque_70mm <- lobster_abundance %>% 
+     filter(SITE == "AQUE" & SIZE_MM >= 70)
+```
+
+This function makes it so that only lobsters from the site "AQUE" over a size of 70mm are put into the new table.
+
+### Exercise 4
+
+```{r}
+max_lobster <- lobster_abundance %>% 
+     group_by(SITE, MONTH) %>% 
+     summarize(MAX_LENGTH = max(SIZE_MM, na.rm = TRUE))
+```
+
+This function makes it so that the lobster data is compressed by site and month, and shows the max lobster length at each site for that month.
+
+## Exercise: Data Visualization
+
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+
+lobsters_summarize <- lobster_abundance %>% 
+  group_by(SITE, YEAR) %>% 
+  summarize(COUNT = n())
+
+lobster_size_lrg <- lobster_abundance %>%
+    filter(YEAR %in% c(2019, 2020, 2021)) %>%
+    mutate(SIZE_BIN = if_else(SIZE_MM <= 70, true = "small", false = "large")) %>%
+    group_by(SITE, SIZE_BIN) %>%
+    summarize(COUNT = n()) %>%
+    drop_na()
+```
+
+### Histogram Creation
+
+```{r}
+lobster_histo <- ggplot(lobster_abundance, aes(x=SIZE_MM)) + 
+  geom_histogram(fill="blue", color="black", binwidth = 10) + 
+  facet_wrap(~SITE) + 
+  xlab("Lobster size") + 
+  ylab("Number of lobsters") + 
+  theme_minimal()
+
+lobster_histo
+```
+
+### Line Graph
+
+```{r}
+lobster_point <- ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
+  geom_point(aes(color = SITE), shape="triangle", size=2) +
+  geom_line(aes(color = SITE)) + theme_classic() + 
+  xlab("Study Year") + 
+  ylab("Number of Lobsters")
+
+lobster_point
+```
+
+### Bar Graph
+
+```{r}
+lobster_bar <- ggplot(data = lobster_size_lrg, aes(x = SITE, y = COUNT, fill = SIZE_BIN)) +
+  geom_col(position = "dodge") + 
+  scale_fill_manual("legend", values = c("large" = "darkgreen", "small" = "darkred")) +
+  xlab("Site Name") +
+  ylab("Number of lobsters")
+
+lobster_bar
 ```
