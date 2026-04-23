@@ -7,7 +7,7 @@ author: "Andreas Krumbein"
 
 ## Collaborator Analysis of Lobster Traps
 
-Analysis of lobster traps along the Santa Barabara Channel and fishing pressure of California Spiny Lobster.
+Analysis of lobster traps along the Santa Barbara Channel and fishing pressure of California Spiny Lobster.
 
 ### Citation
 
@@ -82,8 +82,8 @@ p2 <- ggplot(data = lobster_traps_fishing_pressure, aes(x = SITE, y = COUNT, fil
   theme_light()+
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 
-ggsave("../figures/total_traps.png", p1, width = 7, height = 5, dpi = 300)
-ggsave("../figures/fishing_pressure.png", p2, width = 7, height = 5, dpi = 300)
+ggsave("../figs/total_traps.png", p1, width = 7, height = 5, dpi = 300)
+ggsave("../figs/fishing_pressure.png", p2, width = 7, height = 5, dpi = 300)
 
 grid.arrange(p1, p2, ncol = 2)
 ```
