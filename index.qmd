@@ -6,10 +6,14 @@ editor: visual
 
 ## Welcome
 
-This is my GitHub Page for BIO 806
+This is Esha and Andy's GitHub Page for BIO 806
 
-This page serves as a landing page for my course analyses
+This page serves as a landing page for our course analyses on SBC LTER's data: "Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012"
 
 ## Project Description
+This project looks at data that covers California spiny lobster abundance, size, and the effects of fishing pressure on these lobsters. Two analyses were done: Esha analysed the lobster abundance data, while Andy analysed the size and fishing pressure data. Visual representations were made to portray the data. 
 
 ## Analysis
+For the lobster abundance data, the site "IVEE" had the largest number of lobsters while also having the highest abundance across all sites. The "AQUE" site had the least amount of lobsters overall.
+
+This makes sense since the commercial traps would remove lobsters from each area, and IVEE had the least number of traps each year and the most instances of low fishing pressure. Similarly, AQUE had the least number of lobsters and the most instances of high fishing pressure, alongside the most traps every year except in 2015.
