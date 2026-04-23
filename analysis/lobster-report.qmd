@@ -1,6 +1,7 @@
 ---
 title: "Lobster Report"
 author: "Andreas Krumbein & Esha Prasad"
+date: "04-23-26"
 format: html
 editor: visual
 ---
@@ -13,7 +14,7 @@ Santa Barbara Coastal LTER, D. Reed, and R. Miller. 2022. SBC LTER: Reef: Abunda
 
 ### Abstract Summary
 
-This dataset contains information that relates to California spiny lobster abundance, size, and fishing pressure
+This data set contains information that relates to California spiny lobster abundance, size, and fishing pressure on the coast of the Santa Barbara Channel. Abundance data was collected by divers while fishing pressure data was determined by data from trap floats set up along the mainland.
 
 ### Data
 
@@ -27,4 +28,6 @@ This dataset contains information that relates to California spiny lobster abund
 
 ### Lobster Fishing Pressure
 
-###Discussion
+### Discussion
+
+For the lobster abundance data, the site "IVEE" had the largest lobsters while also having the most abundance across all sites. The "AQUE" site had the least amount of lobsters overall.
