@@ -2,25 +2,96 @@
 title: "Collaborator Analysis"
 format: html
 editor: visual
+author: "Andreas Krumbein"
 ---
 
-## Quarto
+## Collaborator Analysis of Lobster Traps
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Analysis of lobster traps along the Santa Barabara Channel and fishing pressure of California Spiny Lobster.
 
-## Running Code
+### Citation
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+Santa Barbara Coastal LTER, D. Reed, and R. Miller. 2022. SBC LTER: Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012 ver 8. Environmental Data Initiative. https://doi.org/10.6073/pasta/25aa371650a671bafad64dd25a39ee18 (Accessed 2026-04-16).
+
+## Data
+
+Data here describes the fishing pressure of the California Spiny Lobster collected off of the coast of the Santa Barbara Channel. Fishing pressure is determined by the number of commercial trap floats at each location. Data was collected every two to four weeks during the lobster fishing season at nine mainland locations.
+
+This data was collected to provide context to community dynamics of the local kelp reefs since spiny lobsters are important predators in this environment. As a result, eight of the nine locations surveyed were also the location of long-term kelp forest study reefs.
+
+## Data Visualization
+
+Load libraries and data
 
 ```{r}
-1 + 1
+knitr::opts_chunk$set(echo = FALSE)
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(here)
+library(gridExtra)
+
+#read data
+lobster_traps <- read_csv(here::here("data/Lobster_Trap_Counts_All_Years_20210519.csv"))
+
+#mutate data to remove -99999 values from TRAPS
+lobster_traps <- lobster_traps %>% 
+  mutate(TRAPS = na_if(TRAPS, -99999))
+
+#mutate to fix inconsistencies in site denotation
+lobster_traps <- lobster_traps %>% 
+  mutate(SITE = if_else(SITE == "AHND TO AQUE", "AHND to AQUE", SITE))
 ```
 
-You can add options to executable code like this
+Plot total number of traps every year grouped by site
 
-```{r}
-#| echo: false
-2 * 2
+```{r, fig.width=15, fig.height=5, out.width="100%"}
+#create 
+lobsters_traps_summarize <- lobster_traps %>% 
+  group_by(SITE, YEAR) %>% 
+  summarize(TOTAL_TRAPS = sum(TRAPS, na.rm = TRUE))
+
+# line and point plot
+p1 <- ggplot(data = lobsters_traps_summarize, aes(x = YEAR, y = TOTAL_TRAPS)) +
+  geom_point(aes(color = SITE), 
+             size=3) +
+  geom_line(aes(color = SITE), 
+            size =1) +
+  labs(title = "Total Traps by Site",
+       dictionary = c(TOTAL_TRAPS = "Total Traps",
+                      YEAR = "Year",
+                      Site = "Site")
+       ) +
+  theme_light()
+
+lobster_traps_fishing_pressure <- lobster_traps %>% 
+  filter(YEAR %in% c(2019, 2020, 2021)) %>%
+  mutate(FISHING_PRESSURE = if_else(TRAPS >= 8, "High", "Low")) %>%
+  group_by(SITE, FISHING_PRESSURE) %>%
+  summarize(COUNT = n()) %>%
+  drop_na()
+
+# bar plot
+p2 <- ggplot(data = lobster_traps_fishing_pressure, aes(x = SITE, y = COUNT, fill = FISHING_PRESSURE)) +
+  geom_col() +
+  labs(title = "Fishing Pressure By Site From 2019-2021",
+       dictionary = c(COUNT = "Number of High/Low Pressure Observations",
+                      Site = "Site",
+                      FISHING_PRESSURE = "Fishing Pressure"))+
+  theme_light()+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+ggsave("../figures/total_traps.png", p1, width = 7, height = 5, dpi = 300)
+ggsave("../figures/fishing_pressure.png", p2, width = 7, height = 5, dpi = 300)
+
+grid.arrange(p1, p2, ncol = 2)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## Discussion
+
+The two figures show total traps at each location, as well as the fishing pressure at each location through the years 2019 to 2021. We observe that the sites ABUR, AHND, AHND to AQUE, and IVEE have significantly lower total traps since 2012 than the other groups across all years. This is supported by the data on fishing pressure, which shows that no instances of high fishing pressure were found at these locations. The only other group to have no instances of high fishing pressure was NAPL, which had relatively low number of traps, staying below 500 total traps since 2012.
+
+Similarly, the two locations with the most instances of high fishing pressure, GOLB and CARP, both had the highest total number of traps through the years of 2019-2021. However, AQUE had the second highest number of traps prior to 2018. In addition, we see that all groups has a steep and mysterious decline in total traps set in 2021.
+
+These observations show that the channel has specific locations that promotes lobstering, and these locations change over time. It would be interesting to look at the factors that make these locations more appealing to lobster fishermen, and the factors that subsequently cause them to change.
