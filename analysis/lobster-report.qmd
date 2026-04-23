@@ -32,10 +32,8 @@ This data set contains information that relates to California spiny lobster abun
 <<<<<<< HEAD
 ![Bar Graph](images/fishing_pressure.png){fig-align="left" width="295"}
 :::
-
-### Discussion
 =======
 ### Discussion
 
 For the lobster abundance data, the site "IVEE" had the largest lobsters while also having the most abundance across all sites. The "AQUE" site had the least amount of lobsters overall.
->>>>>>> 036b40234920d709f4d639026488b79969915f6e
+
