@@ -15,6 +15,10 @@ Santa Barbara Coastal LTER, D. Reed, and R. Miller. 2022. SBC LTER: Reef: Abunda
 
 ### Lobster Abundance Analysis
 
-### Lobster Fishing Pressure
+### Lobster Fishing Pressure Analysis
 
-###Discussion
+::: {layout-ncol="2"}
+![](../figs/total_traps.png) ![](../figs/fishing_pressure.png)
+:::
+
+### Discussion
