@@ -17,6 +17,9 @@ Santa Barbara Coastal LTER, D. Reed, and R. Miller. 2022. SBC LTER: Reef: Abunda
 This data set contains information that relates to California spiny lobster abundance, size, and fishing pressure on the coast of the Santa Barbara Channel. Abundance data was collected by divers while fishing pressure data was determined by data from trap floats set up along the mainland.
 
 ### Data
+Data here describes the lobster abundance,size, and fishing pressure of the California Spiny Lobster collected off of the coast of the Santa Barbara Channel. Lobster abundance and size was collected before the fishing season. Meanwhile, fishing pressure is determined by the number of commercial trap floats at each location and was collected during the fishing season.
+
+This data was collected to provide context to community dynamics of the local kelp reefs since spiny lobsters are important predators in this environment. As a result, eight of the nine locations surveyed were also the location of long-term kelp forest study reefs.
 
 ### Lobster Abundance Analysis
 ::: {#fig-lobster-abundance layout-ncol="2"}
@@ -36,5 +39,5 @@ This data set contains information that relates to California spiny lobster abun
 
 For the lobster abundance data, the site "IVEE" had the largest lobsters while also having the most abundance across all sites. The "AQUE" site had the least amount of lobsters overall.
 
-This makes sense since the commercial traps would remove lobsters from each area, and IVEE had the least number of traps each year and the most instances of low fishing pressure. Similarly, AQUE had the least number of lobsters and the most instances of high fishing pressure, alongside the most traps every year except in 2015.
+This is unexpected as we would expect higher fishing pressure at locations with more lobsters. Instead, IVEE had the least number of traps each year and the most instances of low fishing pressure. Similarly, AQUE had the least number of lobsters and the most instances of high fishing pressure, alongside the most traps every year except in 2015.
 
