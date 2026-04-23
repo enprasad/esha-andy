@@ -11,9 +11,19 @@ editor: visual
 
 Santa Barbara Coastal LTER, D. Reed, and R. Miller. 2022. SBC LTER: Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012 ver 8. Environmental Data Initiative. https://doi.org/10.6073/pasta/25aa371650a671bafad64dd25a39ee18 (Accessed 2026-04-16).
 
+### Abstract Summary
+
+This dataset contains information that relates to California spiny lobster abundance, size, and fishing pressure
+
 ### Data
 
 ### Lobster Abundance Analysis
+
+::: {#fig-lobster-abundance layout-ncol="2"}
+![Bar Graph](images/lobster_bar_plot.png){fig-alt="A bar graph that shows the abundance of lobsters relative to the sites sampled" fig-align="left" width="288"}
+
+![Histogram](images/lobster_histogram.png){fig-alt="A collection of histograms to show distribution of lobster abundance across 5 different sites" fig-align="left" width="295"}
+:::
 
 ### Lobster Fishing Pressure
 
