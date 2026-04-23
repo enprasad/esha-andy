@@ -12,6 +12,7 @@ This page serves as a landing page for our course analyses on SBC LTER's data: "
 
 # Quarto Document Analysis
 
+https://github.com/enprasad/esha-andy/blob/main/analysis/lobster-report.qmd
 
 ## Project Description
 This project looks at data that covers California spiny lobster abundance, size, and the effects of fishing pressure on these lobsters. Two analyses were done: Esha analysed the lobster abundance data, while Andy analysed the size and fishing pressure data. Visual representations were made to portray the data. 
